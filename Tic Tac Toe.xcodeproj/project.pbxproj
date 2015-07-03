@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04CDBD6E1B46EF710017878C /* GridUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDBD6D1B46EF710017878C /* GridUIView.swift */; };
 		7D745E0F1B45C08300F9CBE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D745E0E1B45C08300F9CBE4 /* AppDelegate.swift */; };
 		7D745E111B45C08300F9CBE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D745E101B45C08300F9CBE4 /* ViewController.swift */; };
 		7D745E141B45C08300F9CBE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D745E121B45C08300F9CBE4 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		7D745E191B45C08300F9CBE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D745E171B45C08300F9CBE4 /* LaunchScreen.storyboard */; };
 		7D745E241B45C08300F9CBE4 /* Tic_Tac_ToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D745E231B45C08300F9CBE4 /* Tic_Tac_ToeTests.swift */; };
 		7D745E2F1B45C08300F9CBE4 /* Tic_Tac_ToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D745E2E1B45C08300F9CBE4 /* Tic_Tac_ToeUITests.swift */; };
+		7D745E3D1B45C2BE00F9CBE4 /* GridLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D745E3C1B45C2BE00F9CBE4 /* GridLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04CDBD6D1B46EF710017878C /* GridUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridUIView.swift; sourceTree = "<group>"; };
 		7D745E0B1B45C08300F9CBE4 /* Tic Tac Toe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tic Tac Toe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D745E0E1B45C08300F9CBE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D745E101B45C08300F9CBE4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		7D745E2A1B45C08300F9CBE4 /* Tic Tac ToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tic Tac ToeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D745E2E1B45C08300F9CBE4 /* Tic_Tac_ToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tic_Tac_ToeUITests.swift; sourceTree = "<group>"; };
 		7D745E301B45C08300F9CBE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D745E3C1B45C2BE00F9CBE4 /* GridLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				7D745E0E1B45C08300F9CBE4 /* AppDelegate.swift */,
 				7D745E101B45C08300F9CBE4 /* ViewController.swift */,
 				7D745E121B45C08300F9CBE4 /* Main.storyboard */,
+				7D745E3C1B45C2BE00F9CBE4 /* GridLabel.swift */,
+				04CDBD6D1B46EF710017878C /* GridUIView.swift */,
 				7D745E151B45C08300F9CBE4 /* Assets.xcassets */,
 				7D745E171B45C08300F9CBE4 /* LaunchScreen.storyboard */,
 				7D745E1A1B45C08300F9CBE4 /* Info.plist */,
@@ -255,7 +261,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D745E3D1B45C2BE00F9CBE4 /* GridLabel.swift in Sources */,
 				7D745E111B45C08300F9CBE4 /* ViewController.swift in Sources */,
+				04CDBD6E1B46EF710017878C /* GridUIView.swift in Sources */,
 				7D745E0F1B45C08300F9CBE4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +491,7 @@
 				7D745E351B45C08300F9CBE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D745E361B45C08300F9CBE4 /* Build configuration list for PBXNativeTarget "Tic Tac ToeTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +500,7 @@
 				7D745E381B45C08300F9CBE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D745E391B45C08300F9CBE4 /* Build configuration list for PBXNativeTarget "Tic Tac ToeUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +509,7 @@
 				7D745E3B1B45C08300F9CBE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
