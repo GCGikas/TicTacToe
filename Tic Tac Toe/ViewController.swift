@@ -11,15 +11,6 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var gridLabel0: GridLabel!
-    @IBOutlet weak var gridLabel1: GridLabel!
-    @IBOutlet weak var gridLabel2: GridLabel!
-    @IBOutlet weak var gridLabel3: GridLabel!
-    @IBOutlet weak var gridLabel4: GridLabel!
-    @IBOutlet weak var gridLabel5: GridLabel!
-    @IBOutlet weak var gridLabel6: GridLabel!
-    @IBOutlet weak var gridLabel7: GridLabel!
-    @IBOutlet weak var gridLabel8: GridLabel!
     @IBOutlet weak var gridImage0: GridUIView!
     @IBOutlet weak var gridImage1: GridUIView!
     @IBOutlet weak var gridImage2: GridUIView!
@@ -30,41 +21,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var gridImage7: GridUIView!
     @IBOutlet weak var gridImage8: GridUIView!
     
-    var labelsArray: [GridLabel]!
     var imageArray: [GridUIView]!
     var winArray = []
     var xTurn = true
     var xWins = false
     var oWins = false
     var winningPlayer = ""
+    var totalTurns = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        labelsArray = [gridLabel0, gridLabel1, gridLabel2, gridLabel3, gridLabel4, gridLabel5, gridLabel6, gridLabel7, gridLabel8]
         imageArray = [gridImage0, gridImage1, gridImage2, gridImage3, gridImage4, gridImage5, gridImage6, gridImage7, gridImage8]
     }
 
-    func checker(a: GridLabel, b: GridLabel, c: GridLabel) {
-        if (a.text != nil && b.text == a.text && b.text == c.text) {
-            winningPlayer = b.text!
-        }
-    }
-    
     func checkImage(a: GridUIView, b: GridUIView, c: GridUIView) {
         if (a.image != nil && b.image == a.image && b.image == c.image) {
-            winningPlayer = "\(b.image)"
+            if b.image == UIImage(named: "SteamBun") {
+                winningPlayer = "Steam Bun"
+            }
+            else {
+                winningPlayer = "Apple"
+            }
         }
-    }
-    
-    func checkingForWinner() {
-        checker(gridLabel0, b: gridLabel1, c: gridLabel2)
-        checker(gridLabel3, b: gridLabel4, c: gridLabel5)
-        checker(gridLabel6, b: gridLabel7, c: gridLabel8)
-        checker(gridLabel0, b: gridLabel3, c: gridLabel6)
-        checker(gridLabel1, b: gridLabel4, c: gridLabel7)
-        checker(gridLabel2, b: gridLabel5, c: gridLabel8)
-        checker(gridLabel0, b: gridLabel4, c: gridLabel8)
-        checker(gridLabel2, b: gridLabel4, c: gridLabel8)
     }
     
     func checkingForImageWinner() {
@@ -78,13 +56,6 @@ class ViewController: UIViewController {
         checkImage(gridImage2, b: gridImage4, c: gridImage6)
     }
     
-    func alertMessage(value : String) {
-        let message = value + " has won!"
-        let alert = UIAlertController(title: "Winner!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
     func alertMessageImage(value : String) {
         let message = value + " has won!"
         let alert = UIAlertController(title: "Winner!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -92,9 +63,18 @@ class ViewController: UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func alertMessageCatsGame() {
+        let message = "It's a cat's game!"
+        let alert = UIAlertController(title: "Cat's Game!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     func resetGridImages() {
         for image in imageArray {
-            image.image = nil
+            image.image = UIImage(named: "")
+            image.canTap = true
+            xTurn = true
         }
     }
     
@@ -103,51 +83,36 @@ class ViewController: UIViewController {
             if (CGRectContainsPoint(image.frame, sender.locationInView(backgroundView))) {
                 if image.canTap == true {
                     if xTurn == true {
-                        image.image = er34yqh
+                        image.image = UIImage(named: "SteamBun")
                         xTurn = false
                         image.canTap = false
+                        totalTurns = totalTurns + 1
                     }
                     else {
-                        image.image = 4drrsg3q4
+                        image.image = UIImage(named: "Apple")
                         xTurn = true
                         image.canTap = false
+                        totalTurns = totalTurns + 1
                     }
-                    checkingForWinner()
-                    if winningPlayer == "X" {
-                        print("X has won")
+                    checkingForImageWinner()
+                    if winningPlayer == "Steam Bun" {
                         alertMessageImage(winningPlayer)
+                        resetGridImages()
+                        winningPlayer = ""
+                        totalTurns = 0
+                        
                     }
-                    else if winningPlayer == "O" {
-                        print("O has won")
+                    else if winningPlayer == "Apple" {
                         alertMessageImage(winningPlayer)
+                        resetGridImages()
+                        winningPlayer = ""
+                        totalTurns = 0
                     }
-                }
-            }
-        }
-    }
-        
-    @IBAction func onTappedChangeLabel(sender: UITapGestureRecognizer) {
-        for label in labelsArray {
-            if (CGRectContainsPoint(label.frame, sender.locationInView(backgroundView))) {
-                if label.canTap == true {
-                    if xTurn == true {
-                        label.text = "X"
-                        xTurn = false
-                        label.canTap = false
-                    }
-                    else {
-                        label.text = "O"
-                        xTurn = true
-                        label.canTap = false
-                    }
-                checkingForWinner()
-                    if winningPlayer == "X" {
-                        print("X has won")
-                        alertMessage(winningPlayer)
-                    }
-                    else if winningPlayer == "O" {
-                        print("O has won")
-                        alertMessage(winningPlayer)
+                    else if totalTurns == 9 {
+                        alertMessageCatsGame()
+                        resetGridImages()
+                        winningPlayer = ""
+                        totalTurns = 0
                     }
                 }
             }
