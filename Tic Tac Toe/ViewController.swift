@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var gridImage6: GridUIView!
     @IBOutlet weak var gridImage7: GridUIView!
     @IBOutlet weak var gridImage8: GridUIView!
+    @IBOutlet weak var steamBunDragImage: UIImageView!
+    @IBOutlet weak var appleDragImage: UIImageView!
     
     var imageArray: [GridUIView]!
     var winArray = []
@@ -32,6 +34,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageArray = [gridImage0, gridImage1, gridImage2, gridImage3, gridImage4, gridImage5, gridImage6, gridImage7, gridImage8]
+        for image in imageArray {
+            image.image = UIImage(named: "")
+            image.canTap = true
+        }
     }
 
     func checkImage(a: GridUIView, b: GridUIView, c: GridUIView) {
